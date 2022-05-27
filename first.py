@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import os
 from datetime import datetime
+from moviepy.editor import *
 
 VID_FILETYPES=[".mp4",".mov",".avi",".flv",".mkv",".wmv","h264",".264","mpeg"]
 
@@ -14,7 +15,12 @@ def finder()->bool:
   log.write(path)
   log.writelines(lsdir)
   for file in lsdir:
-    if file[::-1][:-3][::-1].lower() in VID_FILETYPES:
+    if file[::-1][:4][::-1].lower() in VID_FILETYPES:
+      clip=VideoFileClip(file)
+      if 
+      
+      
+      
       
       
   
