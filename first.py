@@ -3,6 +3,8 @@ import numpy as np
 import os
 from datetime import datetime
 
+#This script requires multiple dependencies and requires you to 
+
 VID_FILETYPES=[".mp4",".mov",".avi",".flv",".mkv",".wmv","h264",".264","mpeg"]
 
 def finder()->bool:
@@ -15,6 +17,7 @@ def finder()->bool:
   log.writelines(lsdir)
   for file in lsdir:
     if file[::-1][:-3][::-1].lower() in VID_FILETYPES:
+      
       
       
   
