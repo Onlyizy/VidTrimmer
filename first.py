@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import os
 from datetime import datetime
+from moviepy.editor import *
 
 #This script requires multiple dependencies and requires you to 
 
@@ -26,8 +27,6 @@ def usrprompt()->tuple:
     path=input("Copy the path to the directory and paste it here: ")
     timeset=int(input("Please enter the number of seconds you would like the videos to be trimmed to. We recommend either 30s or 10s for social media content: "))
     finder(path,timeset)
-
-      
   
 
 def trimmer()->bool:
