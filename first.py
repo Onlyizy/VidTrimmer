@@ -24,11 +24,24 @@ def findandTrim(path:str,timeset:int)->int:
         duration=float(video.duration)
         if duration>timeset:
           for start in range(int(duration))[::timeset]:
+            print("start=",start)
+            print()
+            print("duration=",duration)
+            print()
+            print("timeset=",timeset)
             newclips.append(video.subclip(start,start+timeset))
             clipcount=+1
+            print(newclips)
+          for newclip in newclips:
+            print(newclip)
+            print("clipcount=",clipcount)
+            newclip.write_videofile(str(clipcount)+file)
+            print("done")
           cuttracker.setdefault(file,clipcount)
+          print("done")
         counter=+1
   logwriter(path,counter,cuttracker)
+  print("done")
   return counter
 
 def usrprompt():
