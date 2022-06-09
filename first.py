@@ -17,31 +17,21 @@ def findandTrim(path:str,timeset:int)->int:
   for file in lsdir:
     for ext in VID_FILETYPES:
       if file.endswith(ext):
-        print()
-        print(file)
         clipcount=0
         video=VideoFileClip(path+"\\"+file)
         duration=float(video.duration)
         if duration>timeset:
           for start in range(int(duration))[::timeset]:
-            print("start=",start)
-            print()
-            print("duration=",duration)
-            print()
-            print("timeset=",timeset)
-            newclips.append(video.subclip(start,start+timeset))
-            clipcount=+1
-            print(newclips)
+            if start+timeset<=duration:
+              newclips.append(video.subclip(start,start+timeset))
+            else:
+              newclips.append(video.subclip(start,))
           for newclip in newclips:
-            print(newclip)
-            print("clipcount=",clipcount)
             newclip.write_videofile(str(clipcount)+file)
-            print("done")
+            clipcount+=1
           cuttracker.setdefault(file,clipcount)
-          print("done")
-        counter=+1
+        counter+=1
   logwriter(path,counter,cuttracker)
-  print("done")
   return counter
 
 def usrprompt():
