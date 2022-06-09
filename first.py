@@ -10,14 +10,13 @@ VID_FILETYPES=[".mp4",".mov",".avi",".flv",".mkv",".wmv","h264",".264","mpeg"]
 
 def findandTrim(path:str,timeset:int)->int:
   counter=0
-  newclips=[]
   cuttracker={}
   lsdir=os.listdir(path)
-  print(lsdir)
   for file in lsdir:
+    clipcount=0
     for ext in VID_FILETYPES:
-      if file.endswith(ext):
-        clipcount=0
+      newclips=[]
+      if file.lower().endswith(ext):
         video=VideoFileClip(path+"\\"+file)
         duration=float(video.duration)
         if duration>timeset:
