@@ -1,10 +1,10 @@
-import cv2
+#import cv2
 import numpy as np
 import os
 from datetime import datetime
 from moviepy.editor import *
 
-#This script requires multiple dependencies and requires you to 
+#This script requires the moviepy package and may require cv2 in future updates. 
 
 VID_FILETYPES=[".mp4",".mov",".avi",".flv",".mkv",".wmv","h264",".264","mpeg"]
 
@@ -41,16 +41,21 @@ def usrprompt():
   
 def logwriter(path:str,counter,cuttracker)->bool:
   log=open("log.txt","a+")
-  time=datetime.now()
-  log.write(str(time))
+  log.write(str(datetime.now()))
   log.write("\n")
   lsdir=os.listdir(path)
-  log.write(path)
+  log.write("PATH: " + path)
   log.write("\n")
+  log.write("FILES IN DIRECTORY: ")
   log.writelines(lsdir)
+  log.write("\n")
+  log.write(counter+" videos processed")
+  log.write("\n")
+  for video in cuttracker.keys():
+    log.write(video+" was trimmed into "+cuttracker[video]+"clips")
+  log.write("="*100)
   print(log.read())
   log.close()
 
 if __name__=="__main__":
   usrprompt()
-
